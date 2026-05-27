@@ -4,7 +4,14 @@ A small collection of terminal aliases for everyday development tasks (git, dock
 
 ## Install
 
-### Option A: Source from bash (recommended)
+### Option A: curl | sh (recommended)
+```bash
+curl -fsSL https://raw.githubusercontent.com/beamvex/alias.sh/main/install.sh | sh
+```
+
+This installs to `~/.config/alias.sh/alias.sh` and adds a `source` line to your `~/.bashrc` or `~/.zshrc` if it is not already present.
+
+### Option B: Source from bash
 Add this to your `~/.bashrc`:
 
 ```bash
@@ -17,7 +24,7 @@ Reload your shell:
 source ~/.bashrc
 ```
 
-### Option B: Source from zsh
+### Option C: Source from zsh
 Add this to your `~/.zshrc`:
 
 ```bash
@@ -30,7 +37,7 @@ Reload your shell:
 source ~/.zshrc
 ```
 
-### Option C: Source manually (one session)
+### Option D: Source manually (one session)
 ```bash
 source /home/robertf/develop/alias.sh/alias.sh
 ```

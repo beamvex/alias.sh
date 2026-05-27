@@ -28,6 +28,15 @@ alias ga="git add"
 alias gaa="git add --all"
 alias gc="git commit"
 alias gcam="git commit -am"
+_gacp() {
+  if [ "$#" -lt 1 ]; then
+    echo "usage: gacp <commit message>" >&2
+    return 2
+  fi
+
+  git add --all && git commit -am "$*" && git push
+}
+alias gacp="_gacp"
 alias gph="git push"
 alias gpu="git push -u origin HEAD"
 alias gp="git pull"
