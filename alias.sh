@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Author: Robert Forster
+# Date: 2026-05-27
+# Description: A collection of terminal aliases for everyday development tasks (git, docker, apt, node, python, terraform).
+
 # Bash aliases
 alias ll="ls -la"
 alias lhrt="ls -lhrta"
