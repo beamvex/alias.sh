@@ -23,9 +23,17 @@ CARGO_PREFIX="${CARGO_PREFIX:-cg}"
 # ─── Alias help storage ───────────────────────────────────────────────────────
 
 declare -A _ALIAS_HELP
+declare -a _ALIAS_GROUPS
 
 _alias_help() {
   printf '%s\n' "${_ALIAS_HELP[$1]}"
+}
+
+_alias_help_all() {
+  local group
+  for group in "${_ALIAS_GROUPS[@]}"; do
+    printf '%s\n' "${_ALIAS_HELP[$group]}"
+  done
 }
 
 # ─── _register_aliases <group> <prefix> <array_name> ─────────────────────────
@@ -60,6 +68,7 @@ _register_aliases() {
   done < <(printf '%s\n' "${!_arr[@]}" | sort)
 
   _ALIAS_HELP["$arr_name"]="$help_text"
+  _ALIAS_GROUPS+=("$arr_name")
 
   for suffix in "${!_arr[@]}"; do
     [ "$suffix" = '_base' ] && continue
@@ -192,6 +201,8 @@ _register_aliases "Python"     "${PREFIX}${PYTHON_PREFIX}"     _ALIASES_python
 _register_aliases "Node"       "${PREFIX}${NODE_PREFIX}"       _ALIASES_node
 _register_aliases "Terraform"  "${PREFIX}${TERRAFORM_PREFIX}"  _ALIASES_terraform
 _register_aliases "Terragrunt" "${PREFIX}${TERRAGRUNT_PREFIX}" _ALIASES_terragrunt
+
+eval "${PREFIX}() { _alias_help_all; }"
 
 
 
