@@ -15,7 +15,7 @@ This installs to `~/.config/alias.sh/alias.sh` and adds a `source` line to your 
 Add this to your `~/.bashrc`:
 
 ```bash
-source /home/robertf/develop/alias.sh/alias.sh
+source ~/.config/alias.sh/alias.sh
 ```
 
 Reload your shell:
@@ -28,7 +28,7 @@ source ~/.bashrc
 Add this to your `~/.zshrc`:
 
 ```bash
-source /home/robertf/develop/alias.sh/alias.sh
+source ~/.config/alias.sh/alias.sh
 ```
 
 Reload your shell:
@@ -39,14 +39,24 @@ source ~/.zshrc
 
 ### Option D: Source manually (one session)
 ```bash
-source /home/robertf/develop/alias.sh/alias.sh
+source ~/.config/alias.sh/alias.sh
+```
+
+## Prefix
+
+Aliases are created with a prefix. By default, the prefix is `@`.
+
+You can override the prefix when sourcing:
+
+```bash
+PREFIX=":" source ~/.config/alias.sh/alias.sh
 ```
 
 ## Verify it works
 ```bash
-alias ll
-type ll
-ll
+alias @ll
+type @ll
+@ll
 ```
 
 ## Common issues
