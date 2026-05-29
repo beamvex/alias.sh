@@ -26,13 +26,15 @@ declare -A _ALIAS_HELP
 declare -a _ALIAS_GROUPS
 
 _alias_help() {
-  printf '%s\n' "${_ALIAS_HELP[$1]}"
+  printf '%s' "${_ALIAS_HELP[$1]}"
 }
 
 _alias_help_all() {
-  local group
+  local group first=1
   for group in "${_ALIAS_GROUPS[@]}"; do
-    printf '%s\n' "${_ALIAS_HELP[$group]}"
+    [ "$first" = 1 ] || printf '\n'
+    first=0
+    printf '%s' "${_ALIAS_HELP[$group]}"
   done
 }
 
@@ -47,16 +49,17 @@ _register_aliases() {
   local arr_name="$3"
   local -n _arr="$arr_name"
 
-  local suffix entry cmd desc base_cmd="" help_text
+  local suffix entry cmd desc base_cmd="" help_text _line
 
-  help_text="$(printf '\033[1m%s\033[0m (prefix: \033[36m%s\033[0m)\n' "$group" "$prefix")"
+  printf -v help_text '\033[1m%s\033[0m  (prefix: \033[36m%s\033[0m)\n\n' "$group" "$prefix"
 
   # Print the _base entry first, then all other suffixes alphabetically
   if [[ -v '_arr[_base]' ]]; then
     entry="${_arr[_base]}"
     base_cmd="${entry%%|*}"
     desc="${entry##*|}"
-    help_text+="$(printf '  \033[33m%-16s\033[0m  %-30s  %s\n' "${prefix}" "$base_cmd" "$desc")"
+    printf -v _line '  \033[33m%-16s\033[0m  %-28s  \033[2m%s\033[0m\n' "${prefix}" "$base_cmd" "$desc"
+    help_text+="$_line"
   fi
 
   while IFS= read -r suffix; do
@@ -64,7 +67,8 @@ _register_aliases() {
     entry="${_arr[$suffix]}"
     cmd="${entry%%|*}"
     desc="${entry##*|}"
-    help_text+="$(printf '  \033[33m%-16s\033[0m  %-30s  %s\n' "${prefix}${suffix}" "$cmd" "$desc")"
+    printf -v _line '  \033[33m%-16s\033[0m  %-28s  \033[2m%s\033[0m\n' "${prefix}${suffix}" "$cmd" "$desc"
+    help_text+="$_line"
   done < <(printf '%s\n' "${!_arr[@]}" | sort)
 
   _ALIAS_HELP["$arr_name"]="$help_text"
