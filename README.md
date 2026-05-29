@@ -59,6 +59,29 @@ type @ll
 @ll
 ```
 
+## Built-in help
+
+Every group prefix doubles as a help command. Run it with no arguments to list all aliases in that group:
+
+```bash
+@        # Bash / navigation aliases
+@apt     # APT aliases
+@g       # Git aliases
+@d       # Docker aliases
+@p       # Python aliases
+@n       # Node aliases
+@tf      # Terraform aliases
+@tg      # Terragrunt aliases
+```
+
+Groups that wrap an underlying command (`@g`, `@d`, `@n`, `@p`, `@tf`, `@tg`) also act as a direct passthrough when called with arguments:
+
+```bash
+@g log --oneline -10   # same as: git log --oneline -10
+@d ps -a               # same as: docker ps -a
+@tf plan               # same as: terraform plan
+```
+
 ## Common issues
 
 ### Aliases don’t persist
@@ -73,31 +96,101 @@ If you run the file like this:
 ### Aliases in scripts
 Aliases typically do not expand in non-interactive shells. If you need reusable commands in scripts, prefer shell functions or standalone scripts.
 
-## Notable aliases
+## Aliases
 
-### Navigation / ls
-- `ll` -> `ls -la`
-- `lhrt` -> `ls -lhrta`
+Run any bare prefix for a full, up-to-date list (see [Built-in help](#built-in-help) above). Quick reference below.
 
-### Git
-- `g` -> `git`
-- `gs` -> `git status`
-- `gaa` -> `git add --all`
-- `gcam` -> `git commit -am`
-- `gpu` -> `git push -u origin HEAD`
+### Bash (`@`)
+| Alias | Command |
+|-------|---------|
+| `@ll` | `ls -la` |
+| `@lhrt` | `ls -lhrta` |
+| `@le` | `less` |
+| `@clr` | `clear` |
 
-### Docker
-- `d` -> `docker`
-- `dps` -> `docker ps`
-- `dpa` -> `docker ps -a`
-- `dexec` -> `docker exec`
-- `dlogs` -> `docker logs`
+### APT (`@apt`)
+| Alias | Command |
+|-------|---------|
+| `@aptu` | `sudo apt update` |
+| `@aptug` | `sudo apt upgrade` |
+| `@apti` | `sudo apt install` |
+| `@aptr` | `sudo apt remove` |
+| `@aptpurge` | `sudo apt purge` |
+| `@aptarem` | `sudo apt autoremove` |
 
-### Apt
-- `aptu` -> `sudo apt update`
-- `aptug` -> `sudo apt upgrade`
-- `apti` -> `sudo apt install`
+### Git (`@g`)
+| Alias | Command |
+|-------|---------|
+| `@g` | `git` (passthrough) |
+| `@gs` | `git status` |
+| `@ga` | `git add` |
+| `@gaa` | `git add --all` |
+| `@gc` | `git commit` |
+| `@gcam` | `git commit -am` |
+| `@gacp <msg>` | add all, commit, and push |
+| `@gph` | `git push` |
+| `@gpu` | `git push -u origin HEAD` |
+| `@gp` | `git pull` |
+| `@gco` | `git checkout` |
+| `@gcb` | `git checkout -b` |
+| `@gi` | `git init -b main` |
+| `@gl` | `git log` |
 
-### Terraform / Terragrunt
-- `tf` -> `terraform`
-- `tg` -> `terragrunt`
+### Docker (`@d`)
+| Alias | Command |
+|-------|---------|
+| `@d` | `docker` (passthrough) |
+| `@dps` | `docker ps` |
+| `@dpa` | `docker ps -a` |
+| `@dstop` | `docker stop` |
+| `@drm` | `docker rm` |
+| `@drmi` | `docker rmi` |
+| `@dexec` | `docker exec` |
+| `@dlogs` | `docker logs` |
+| `@dbuild` | `docker build` |
+| `@dcp` | `docker-compose` |
+
+### Python (`@p`)
+| Alias | Command |
+|-------|---------|
+| `@p` | `python` (passthrough) |
+| `@pi` | `pip3` |
+
+### Node (`@n`)
+| Alias | Command |
+|-------|---------|
+| `@n` | `node` (passthrough) |
+| `@ni` | `npm install` |
+| `@nid` | `npm install --save-dev` |
+| `@nis` | `npm install --save` |
+| `@ngi` | `npm install -g` |
+| `@ns` | `npm start` |
+| `@nd` | `npm run dev` |
+| `@nr` | `npm run` |
+| `@np` | `npm` |
+| `@nin` | `npm init` |
+| `@ny` | `yarn` |
+| `@npn` | `pnpm` |
+
+### Terraform (`@tf`)
+| Alias | Command |
+|-------|---------|
+| `@tf` | `terraform` (passthrough) |
+| `@tfi` | `terraform init` |
+| `@tfp` | `terraform plan` |
+| `@tfa` | `terraform apply` |
+| `@tfd` | `terraform destroy` |
+| `@tfv` | `terraform validate` |
+| `@tfs` | `terraform show` |
+| `@tfst` | `terraform state` |
+| `@tfw` | `terraform workspace` |
+| `@tfo` | `terraform output` |
+| `@tfr` | `terraform refresh` |
+| `@tft` | `terraform taint` |
+| `@tfu` | `terraform untaint` |
+| `@tfg` | `terraform graph` |
+
+### Terragrunt (`@tg`)
+| Alias | Command |
+|-------|---------|
+| `@tg` | `terragrunt` (passthrough) |
