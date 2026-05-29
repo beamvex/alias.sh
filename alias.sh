@@ -79,7 +79,7 @@ _register_aliases() {
   if [ -n "$base_cmd" ]; then
     eval "${prefix}() { if [ \"\$#\" -eq 0 ]; then _alias_help '${arr_name}'; else ${base_cmd} \"\$@\"; fi; }"
   else
-    eval "${prefix}() { _alias_help '${arr_name}'; }"
+    alias "${prefix}"="_alias_help '${arr_name}'"
   fi
 }
 
@@ -202,7 +202,7 @@ _register_aliases "Node"       "${PREFIX}${NODE_PREFIX}"       _ALIASES_node
 _register_aliases "Terraform"  "${PREFIX}${TERRAFORM_PREFIX}"  _ALIASES_terraform
 _register_aliases "Terragrunt" "${PREFIX}${TERRAGRUNT_PREFIX}" _ALIASES_terragrunt
 
-eval "${PREFIX}() { _alias_help_all; }"
+alias "${PREFIX}"='_alias_help_all'
 
 
 
