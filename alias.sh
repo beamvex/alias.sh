@@ -97,6 +97,7 @@ declare -A _ALIASES_bash=(
   ["lhrt"]="ls -lhrta|List files sorted by modification time"
   ["le"]="less|Page through text"
   ["clr"]="clear|Clear the terminal"
+  ["up"]="_alias_update|Update alias.sh and reload shell rc"
 )
 
 # apt aliases
@@ -228,6 +229,16 @@ declare -A _ALIASES_gcp=(
 )
 
 # ─── gacp helper ──────────────────────────────────────────────────────────────
+
+_alias_update() {
+  curl -fsSL "https://raw.githubusercontent.com/beamvex/alias.sh/main/install.sh" | sh
+
+  if [ -n "${ZSH_VERSION:-}" ]; then
+    . "$HOME/.zshrc"
+  else
+    . "$HOME/.bashrc"
+  fi
+}
 
 _gacp() {
   if [ "$#" -lt 1 ]; then

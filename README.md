@@ -86,6 +86,14 @@ Groups that wrap an underlying command (`@g`, `@d`, `@n`, `@p`, `@tf`, `@tg`) al
 @gcp projects list     # same as: gcloud projects list
 ```
 
+## Update
+
+To update your installed aliases and reload your rc file:
+
+```bash
+@up
+```
+
 ## Common issues
 
 ### Aliases don’t persist
