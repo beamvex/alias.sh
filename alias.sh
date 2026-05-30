@@ -4,23 +4,23 @@
 # Date: 2026-05-27
 # Description: A collection of terminal aliases for everyday development tasks (git, docker, apt, node, python, terraform).
 
-PREFIX="${PREFIX:-@}"
-GIT_PREFIX="${GIT_PREFIX:-g}"
-DOCKER_PREFIX="${DOCKER_PREFIX:-d}"
-PYTHON_PREFIX="${PYTHON_PREFIX:-p}"
-NODE_PREFIX="${NODE_PREFIX:-n}"
-TERRAFORM_PREFIX="${TERRAFORM_PREFIX:-tf}"
-TERRAGRUNT_PREFIX="${TERRAGRUNT_PREFIX:-tg}"
-APT_PREFIX="${APT_PREFIX:-apt}"
-BASH_PREFIX="${BASH_PREFIX:-}"
-VSCODE_PREFIX="${VSCODE_PREFIX:-v}"
-WINDSURF_PREFIX="${WINDSURF_PREFIX:-w}"
-TAR_PREFIX="${TAR_PREFIX:-t}"
-TYPESCRIPT_PREFIX="${TYPESCRIPT_PREFIX:-ts}"
-RUST_PREFIX="${RUST_PREFIX:-rs}"
-CARGO_PREFIX="${CARGO_PREFIX:-cg}"
-AWS_PREFIX="${AWS_PREFIX:-aws}"
-GCP_PREFIX="${GCP_PREFIX:-gcp}"
+ALIAS_SH_PREFIX="${ALIAS_SH_PREFIX:-@}"
+ALIAS_SH_GIT_PREFIX="${ALIAS_SH_GIT_PREFIX:-g}"
+ALIAS_SH_DOCKER_PREFIX="${ALIAS_SH_DOCKER_PREFIX:-d}"
+ALIAS_SH_PYTHON_PREFIX="${ALIAS_SH_PYTHON_PREFIX:-p}"
+ALIAS_SH_NODE_PREFIX="${ALIAS_SH_NODE_PREFIX:-n}"
+ALIAS_SH_TERRAFORM_PREFIX="${ALIAS_SH_TERRAFORM_PREFIX:-tf}"
+ALIAS_SH_TERRAGRUNT_PREFIX="${ALIAS_SH_TERRAGRUNT_PREFIX:-tg}"
+ALIAS_SH_APT_PREFIX="${ALIAS_SH_APT_PREFIX:-apt}"
+ALIAS_SH_BASH_PREFIX="${ALIAS_SH_BASH_PREFIX:-}"
+ALIAS_SH_VSCODE_PREFIX="${ALIAS_SH_VSCODE_PREFIX:-v}"
+ALIAS_SH_WINDSURF_PREFIX="${ALIAS_SH_WINDSURF_PREFIX:-w}"
+ALIAS_SH_TAR_PREFIX="${ALIAS_SH_TAR_PREFIX:-t}"
+ALIAS_SH_TYPESCRIPT_PREFIX="${ALIAS_SH_TYPESCRIPT_PREFIX:-ts}"
+ALIAS_SH_RUST_PREFIX="${ALIAS_SH_RUST_PREFIX:-rs}"
+ALIAS_SH_CARGO_PREFIX="${ALIAS_SH_CARGO_PREFIX:-cg}"
+ALIAS_SH_AWS_PREFIX="${ALIAS_SH_AWS_PREFIX:-aws}"
+ALIAS_SH_GCP_PREFIX="${ALIAS_SH_GCP_PREFIX:-gcp}"
 
 # ─── Alias help storage ───────────────────────────────────────────────────────
 
@@ -242,7 +242,7 @@ _alias_update() {
 
 _gacp() {
   if [ "$#" -lt 1 ]; then
-    echo "usage: ${PREFIX}${GIT_PREFIX}acp <commit message>" >&2
+    echo "usage: ${ALIAS_SH_PREFIX}${ALIAS_SH_GIT_PREFIX}acp <commit message>" >&2
     return 2
   fi
   git add --all && git commit -am "$*" && git push
@@ -250,24 +250,24 @@ _gacp() {
 
 # ─── Register all groups ──────────────────────────────────────────────────────
 
-_register_aliases "Bash"       "${PREFIX}${BASH_PREFIX}"       _ALIASES_bash
-_register_aliases "APT"        "${PREFIX}${APT_PREFIX}"        _ALIASES_apt
-_register_aliases "Git"        "${PREFIX}${GIT_PREFIX}"        _ALIASES_git
-_register_aliases "Docker"     "${PREFIX}${DOCKER_PREFIX}"     _ALIASES_docker
-_register_aliases "Python"     "${PREFIX}${PYTHON_PREFIX}"     _ALIASES_python
-_register_aliases "Node"       "${PREFIX}${NODE_PREFIX}"       _ALIASES_node
-_register_aliases "Terraform"  "${PREFIX}${TERRAFORM_PREFIX}"  _ALIASES_terraform
-_register_aliases "Terragrunt" "${PREFIX}${TERRAGRUNT_PREFIX}" _ALIASES_terragrunt
-_register_aliases "VSCode"     "${PREFIX}${VSCODE_PREFIX}"     _ALIASES_vscode
-_register_aliases "Windsurf"   "${PREFIX}${WINDSURF_PREFIX}"   _ALIASES_windsurf
-_register_aliases "tar"        "${PREFIX}${TAR_PREFIX}"        _ALIASES_tar
-_register_aliases "TypeScript" "${PREFIX}${TYPESCRIPT_PREFIX}" _ALIASES_typescript
-_register_aliases "Rust"       "${PREFIX}${RUST_PREFIX}"       _ALIASES_rust
-_register_aliases "Cargo"      "${PREFIX}${CARGO_PREFIX}"      _ALIASES_cargo
-_register_aliases "AWS"        "${PREFIX}${AWS_PREFIX}"        _ALIASES_aws
-_register_aliases "GCP"        "${PREFIX}${GCP_PREFIX}"        _ALIASES_gcp
+_register_aliases "Bash"       "${ALIAS_SH_PREFIX}${ALIAS_SH_BASH_PREFIX}"       _ALIASES_bash
+_register_aliases "APT"        "${ALIAS_SH_PREFIX}${ALIAS_SH_APT_PREFIX}"        _ALIASES_apt
+_register_aliases "Git"        "${ALIAS_SH_PREFIX}${ALIAS_SH_GIT_PREFIX}"        _ALIASES_git
+_register_aliases "Docker"     "${ALIAS_SH_PREFIX}${ALIAS_SH_DOCKER_PREFIX}"     _ALIASES_docker
+_register_aliases "Python"     "${ALIAS_SH_PREFIX}${ALIAS_SH_PYTHON_PREFIX}"     _ALIASES_python
+_register_aliases "Node"       "${ALIAS_SH_PREFIX}${ALIAS_SH_NODE_PREFIX}"       _ALIASES_node
+_register_aliases "Terraform"  "${ALIAS_SH_PREFIX}${ALIAS_SH_TERRAFORM_PREFIX}"  _ALIASES_terraform
+_register_aliases "Terragrunt" "${ALIAS_SH_PREFIX}${ALIAS_SH_TERRAGRUNT_PREFIX}" _ALIASES_terragrunt
+_register_aliases "VSCode"     "${ALIAS_SH_PREFIX}${ALIAS_SH_VSCODE_PREFIX}"     _ALIASES_vscode
+_register_aliases "Windsurf"   "${ALIAS_SH_PREFIX}${ALIAS_SH_WINDSURF_PREFIX}"   _ALIASES_windsurf
+_register_aliases "tar"        "${ALIAS_SH_PREFIX}${ALIAS_SH_TAR_PREFIX}"        _ALIASES_tar
+_register_aliases "TypeScript" "${ALIAS_SH_PREFIX}${ALIAS_SH_TYPESCRIPT_PREFIX}" _ALIASES_typescript
+_register_aliases "Rust"       "${ALIAS_SH_PREFIX}${ALIAS_SH_RUST_PREFIX}"       _ALIASES_rust
+_register_aliases "Cargo"      "${ALIAS_SH_PREFIX}${ALIAS_SH_CARGO_PREFIX}"      _ALIASES_cargo
+_register_aliases "AWS"        "${ALIAS_SH_PREFIX}${ALIAS_SH_AWS_PREFIX}"        _ALIASES_aws
+_register_aliases "GCP"        "${ALIAS_SH_PREFIX}${ALIAS_SH_GCP_PREFIX}"        _ALIASES_gcp
 
-alias "${PREFIX}"='_alias_help_all'
+alias "${ALIAS_SH_PREFIX}"='_alias_help_all'
 
 
 

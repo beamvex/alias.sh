@@ -49,7 +49,7 @@ Aliases are created with a prefix. By default, the prefix is `@`.
 You can override the prefix when sourcing:
 
 ```bash
-PREFIX=":" source ~/.config/alias.sh/alias.sh
+ALIAS_SH_PREFIX=":" source ~/.config/alias.sh/alias.sh
 ```
 
 ## Verify it works
