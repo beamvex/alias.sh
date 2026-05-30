@@ -2,6 +2,8 @@
 
 A small collection of terminal aliases for everyday development tasks (git, docker, apt, node, python, terraform).
 
+**Current version:** `0.1.0` — see [CHANGELOG.md](CHANGELOG.md) for release history.
+
 ## Install
 
 ### Option A: curl | sh (recommended)

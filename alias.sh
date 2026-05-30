@@ -4,6 +4,8 @@
 # Date: 2026-05-27
 # Description: A collection of terminal aliases for everyday development tasks (git, docker, apt, node, python, terraform).
 
+ALIAS_SH_VERSION="0.1.0"
+
 ALIAS_SH_PREFIX="${ALIAS_SH_PREFIX:-@}"
 ALIAS_SH_GIT_PREFIX="${ALIAS_SH_GIT_PREFIX:-g}"
 ALIAS_SH_DOCKER_PREFIX="${ALIAS_SH_DOCKER_PREFIX:-d}"
@@ -98,6 +100,7 @@ declare -A _ALIASES_bash=(
   ["le"]="less -R|Page through text (ANSI colour passthrough)"
   ["clr"]="clear|Clear the terminal"
   ["up"]="_alias_update|Update alias.sh and reload shell rc"
+  ["ver"]="_alias_version|Show alias.sh version"
 )
 
 # apt aliases
@@ -229,6 +232,10 @@ declare -A _ALIASES_gcp=(
 )
 
 # ─── gacp helper ──────────────────────────────────────────────────────────────
+
+_alias_version() {
+  echo "alias.sh v${ALIAS_SH_VERSION}"
+}
 
 _alias_update() {
   curl -fsSL "https://raw.githubusercontent.com/beamvex/alias.sh/main/install.sh" | sh
