@@ -19,6 +19,8 @@ TAR_PREFIX="${TAR_PREFIX:-t}"
 TYPESCRIPT_PREFIX="${TYPESCRIPT_PREFIX:-ts}"
 RUST_PREFIX="${RUST_PREFIX:-rs}"
 CARGO_PREFIX="${CARGO_PREFIX:-cg}"
+AWS_PREFIX="${AWS_PREFIX:-aws}"
+GCP_PREFIX="${GCP_PREFIX:-gcp}"
 
 # ─── Alias help storage ───────────────────────────────────────────────────────
 
@@ -185,6 +187,46 @@ declare -A _ALIASES_terragrunt=(
   ["_base"]="terragrunt|Terragrunt wrapper for Terraform"
 )
 
+# VSCode aliases
+declare -A _ALIASES_vscode=(
+  ["_base"]="code|Visual Studio Code"
+)
+
+# Windsurf aliases
+declare -A _ALIASES_windsurf=(
+  ["_base"]="windsurf|Windsurf IDE"
+)
+
+# tar aliases
+declare -A _ALIASES_tar=(
+  ["_base"]="tar|Archive utility"
+)
+
+# TypeScript aliases
+declare -A _ALIASES_typescript=(
+  ["_base"]="tsc|TypeScript compiler"
+)
+
+# Rust aliases
+declare -A _ALIASES_rust=(
+  ["_base"]="rustc|Rust compiler"
+)
+
+# Cargo aliases
+declare -A _ALIASES_cargo=(
+  ["_base"]="cargo|Rust package manager"
+)
+
+# AWS aliases
+declare -A _ALIASES_aws=(
+  ["_base"]="aws|AWS CLI"
+)
+
+# GCP aliases
+declare -A _ALIASES_gcp=(
+  ["_base"]="gcloud|Google Cloud CLI"
+)
+
 # ─── gacp helper ──────────────────────────────────────────────────────────────
 
 _gacp() {
@@ -205,6 +247,14 @@ _register_aliases "Python"     "${PREFIX}${PYTHON_PREFIX}"     _ALIASES_python
 _register_aliases "Node"       "${PREFIX}${NODE_PREFIX}"       _ALIASES_node
 _register_aliases "Terraform"  "${PREFIX}${TERRAFORM_PREFIX}"  _ALIASES_terraform
 _register_aliases "Terragrunt" "${PREFIX}${TERRAGRUNT_PREFIX}" _ALIASES_terragrunt
+_register_aliases "VSCode"     "${PREFIX}${VSCODE_PREFIX}"     _ALIASES_vscode
+_register_aliases "Windsurf"   "${PREFIX}${WINDSURF_PREFIX}"   _ALIASES_windsurf
+_register_aliases "tar"        "${PREFIX}${TAR_PREFIX}"        _ALIASES_tar
+_register_aliases "TypeScript" "${PREFIX}${TYPESCRIPT_PREFIX}" _ALIASES_typescript
+_register_aliases "Rust"       "${PREFIX}${RUST_PREFIX}"       _ALIASES_rust
+_register_aliases "Cargo"      "${PREFIX}${CARGO_PREFIX}"      _ALIASES_cargo
+_register_aliases "AWS"        "${PREFIX}${AWS_PREFIX}"        _ALIASES_aws
+_register_aliases "GCP"        "${PREFIX}${GCP_PREFIX}"        _ALIASES_gcp
 
 alias "${PREFIX}"='_alias_help_all'
 

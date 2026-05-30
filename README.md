@@ -72,6 +72,8 @@ Every group prefix doubles as a help command. Run it with no arguments to list a
 @n       # Node aliases
 @tf      # Terraform aliases
 @tg      # Terragrunt aliases
+@aws     # AWS aliases
+@gcp     # GCP aliases
 ```
 
 Groups that wrap an underlying command (`@g`, `@d`, `@n`, `@p`, `@tf`, `@tg`) also act as a direct passthrough when called with arguments:
@@ -80,6 +82,8 @@ Groups that wrap an underlying command (`@g`, `@d`, `@n`, `@p`, `@tf`, `@tg`) al
 @g log --oneline -10   # same as: git log --oneline -10
 @d ps -a               # same as: docker ps -a
 @tf plan               # same as: terraform plan
+@aws s3 ls             # same as: aws s3 ls
+@gcp projects list     # same as: gcloud projects list
 ```
 
 ## Common issues
