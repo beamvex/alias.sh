@@ -34,6 +34,7 @@ _alias_help() {
 }
 
 _alias_help_all() {
+  printf '\033[1malias.sh\033[0m  v\033[32m%s\033[0m\n\n' "${ALIAS_SH_VERSION}"
   local group first=1
   for group in "${_ALIAS_GROUPS[@]}"; do
     [ "$first" = 1 ] || printf '\n'
