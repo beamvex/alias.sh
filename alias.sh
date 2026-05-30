@@ -95,7 +95,7 @@ _register_aliases() {
 declare -A _ALIASES_bash=(
   ["ll"]="ls -la|List files in long format"
   ["lhrt"]="ls -lhrta|List files sorted by modification time"
-  ["le"]="less|Page through text"
+  ["le"]="less -R|Page through text (ANSI colour passthrough)"
   ["clr"]="clear|Clear the terminal"
   ["up"]="_alias_update|Update alias.sh and reload shell rc"
 )
