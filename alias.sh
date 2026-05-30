@@ -269,7 +269,8 @@ _register_aliases "GCP"        "${ALIAS_SH_PREFIX}${ALIAS_SH_GCP_PREFIX}"       
 
 alias "${ALIAS_SH_PREFIX}"='_alias_help_all'
 
-unset ALIAS_SH_PREFIX \
+unset PREFIX \
+      ALIAS_SH_PREFIX \
       ALIAS_SH_GIT_PREFIX \
       ALIAS_SH_DOCKER_PREFIX \
       ALIAS_SH_PYTHON_PREFIX \
